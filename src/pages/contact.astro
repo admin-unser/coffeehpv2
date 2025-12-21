@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const contacts = [
+  { label: "Email", value: "hello@untfield.coffee" },
+  { label: "Phone", value: "+81 98 000 0000" },
+  { label: "Address", value: "Yambaru, Okinawa" },
+];
+---
+
+<BaseLayout title="Contact | UNTFIELD COFFEE">
+  <section class="mx-auto w-full max-w-7xl px-6 py-20 md:py-24">
+    <div class="grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
+      <div data-reveal>
+        <p class="text-xs font-semibold uppercase tracking-[0.4em] text-[#1f4d3a]">Contact</p>
+        <h1 class="mt-4 text-4xl font-semibold leading-tight text-[#1a1a1a] md:text-5xl">
+          農園の訪問やギフトのご相談はこちらへ
+        </h1>
+        <p class="mt-5 text-lg leading-relaxed text-black/70">
+          体験ツアー、法人向けロット、ギフトのご相談など、48時間以内にお返事します。
+        </p>
+        <div class="mt-6 space-y-2 text-sm text-black/60">
+          {contacts.map((item) => (
+            <p>
+              <span class="text-xs uppercase tracking-[0.2em] text-black/40">{item.label}</span>
+              <span class="ml-2 font-semibold text-[#1a1a1a]">{item.value}</span>
+            </p>
+          ))}
+        </div>
+      </div>
+      <div
+        class="rounded-[32px] border border-black/5 bg-white/80 p-8 shadow-[0_25px_50px_-40px_rgba(26,26,26,0.7)]"
+        data-reveal
+      >
+        <h2 class="text-xl font-semibold text-[#1a1a1a]">お問い合わせフォーム</h2>
+        <form class="mt-6 space-y-4">
+          <input
+            type="text"
+            placeholder="お名前"
+            class="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm focus:border-[#1f4d3a] focus:outline-none"
+          />
+          <input
+            type="email"
+            placeholder="メールアドレス"
+            class="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm focus:border-[#1f4d3a] focus:outline-none"
+          />
+          <textarea
+            rows="5"
+            placeholder="ご相談内容"
+            class="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm focus:border-[#1f4d3a] focus:outline-none"
+          ></textarea>
+          <button
+            type="button"
+            class="w-full rounded-full bg-[#1f4d3a] px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_35px_-25px_rgba(31,77,58,0.9)] transition hover:-translate-y-0.5 hover:bg-[#183d2f]"
+          >
+            送信する
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

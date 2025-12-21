@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const beans = [
+  {
+    name: "Yambaru Mist",
+    roast: "Light Roast",
+    profile: "柑橘、黒糖、白い花",
+    body: "透明感のある甘さと余韻",
+    image:
+      "https://images.unsplash.com/photo-1511537190424-bbbab1da50f0?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    name: "Forest Reserve",
+    roast: "Medium Roast",
+    profile: "ハーブ、カカオ、木樽",
+    body: "奥行きのある滑らかな質感",
+    image:
+      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    name: "Dawn Harvest",
+    roast: "Medium-Light",
+    profile: "蜂蜜、白桃、シトラス",
+    body: "朝霧のように軽やか",
+    image:
+      "https://images.unsplash.com/photo-1507226983735-a838615193b0?auto=format&fit=crop&w=900&q=80",
+  },
+];
+---
+
+<BaseLayout title="Beans | UNTFIELD COFFEE">
+  <section class="mx-auto w-full max-w-7xl px-6 py-20 md:py-24">
+    <div class="grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
+      <div data-reveal>
+        <p class="text-xs font-semibold uppercase tracking-[0.4em] text-[#1f4d3a]">Beans</p>
+        <h1 class="mt-4 text-4xl font-semibold leading-tight text-[#1a1a1a] md:text-5xl">
+          森の記憶を映す、生豆と焙煎豆
+        </h1>
+        <p class="mt-5 text-lg leading-relaxed text-black/70">
+          農園ごとの個性をそのまま表現するため、ロットごとに焙煎設計を変えています。
+        </p>
+      </div>
+      <img
+        src="https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=1200&q=80"
+        alt="焙煎豆"
+        class="h-[420px] w-full rounded-[32px] object-cover shadow-[0_35px_60px_-45px_rgba(26,26,26,0.85)]"
+        data-reveal
+      />
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-7xl px-6 pb-28">
+    <div class="grid gap-6 md:grid-cols-3" data-reveal>
+      {beans.map((bean) => (
+        <article class="hover-lift overflow-hidden rounded-3xl border border-black/5 bg-white/80">
+          <img src={bean.image} alt={bean.name} class="h-48 w-full object-cover transition duration-700 hover:scale-[1.05]" />
+          <div class="p-6">
+            <p class="text-xs uppercase tracking-[0.2em] text-black/40">{bean.roast}</p>
+            <h2 class="mt-2 text-xl font-semibold text-[#1a1a1a]">{bean.name}</h2>
+            <p class="mt-2 text-sm text-black/60">{bean.profile}</p>
+            <p class="mt-1 text-xs text-black/50">{bean.body}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

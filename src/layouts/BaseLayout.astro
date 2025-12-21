@@ -1,0 +1,113 @@
+---
+import "../styles/global.css";
+
+const {
+  title = "UNTFIELD COFFEE",
+  description = "世界自然遺産・やんばるの森で栽培する有機珈琲豆",
+  lang = "ja",
+} = Astro.props;
+
+const navItems = [
+  { href: "/farm", label: "Farm", sub: "農園" },
+  { href: "/beans", label: "Beans", sub: "豆" },
+  { href: "/ownership", label: "Ownership", sub: "オーナー制度" },
+  { href: "/blog", label: "Journal", sub: "見聞録" },
+  { href: "/contact", label: "Contact", sub: "お問い合わせ" },
+];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="page-shell min-h-screen">
+    <header class="border-b border-black/5">
+      <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6">
+        <a href="/" class="text-lg font-semibold tracking-[0.25em] text-[#1f4d3a]">
+          UNTFIELD
+        </a>
+        <nav class="hidden items-center gap-6 text-sm font-medium text-black/70 md:flex">
+          {navItems.map((item) => (
+            <a href={item.href} class="group transition-colors hover:text-[#1f4d3a]">
+              <span class="block text-[11px] uppercase tracking-[0.2em] text-black/50">
+                {item.label}
+              </span>
+              <span class="block text-sm">{item.sub}</span>
+            </a>
+          ))}
+        </nav>
+        <div class="flex items-center gap-3">
+          <div class="hidden items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-black/50 md:flex">
+            <span>JP</span>
+            <span class="text-black/20">/</span>
+            <span>EN</span>
+          </div>
+          <a
+            href="/ownership"
+            class="rounded-full border border-[#1f4d3a]/30 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#1f4d3a] transition hover:-translate-y-0.5 hover:bg-[#1f4d3a] hover:text-white"
+          >
+            Ownership
+          </a>
+        </div>
+      </div>
+      <nav class="flex items-center gap-4 overflow-x-auto px-6 pb-4 text-xs font-semibold uppercase tracking-[0.2em] text-black/50 md:hidden">
+        {navItems.map((item) => (
+          <a href={item.href} class="whitespace-nowrap rounded-full border border-black/10 bg-white/70 px-4 py-2">
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="border-t border-black/5">
+      <div class="mx-auto flex w-full max-w-7xl flex-col gap-6 px-6 py-10 text-sm text-black/60 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="text-xs uppercase tracking-[0.3em] text-[#1f4d3a]">UNTFIELD COFFEE</p>
+          <p class="mt-2 max-w-md leading-relaxed">
+            世界自然遺産・やんばるの森で育つ、有機珈琲豆のストーリーを静かに届けます。
+          </p>
+        </div>
+        <div class="flex flex-col gap-2 text-xs uppercase tracking-[0.2em]">
+          <span>Yambaru, Okinawa</span>
+          <span>Organic Farm & Roastery</span>
+          <span>© 2024 UNTFIELD COFFEE</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const targets = document.querySelectorAll('[data-reveal]');
+      if (targets.length) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+        targets.forEach((target) => {
+          target.classList.add('reveal');
+          observer.observe(target);
+        });
+      }
+    </script>
+  </body>
+</html>

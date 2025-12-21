@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const posts = [
+  {
+    category: "栽培便り",
+    date: "2024.06.20",
+    title: "森の雨と土壌が豆に与える香り",
+    excerpt: "やんばるの雨季に訪れる微細な霧が、豆の甘さをどう変えるのか。",
+    image:
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    category: "研究ノート",
+    date: "2024.05.11",
+    title: "有機栽培とポリフェノール含有量",
+    excerpt: "論文ベースの知見を読み解き、身体への恩恵を整理します。",
+    image:
+      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    category: "ストーリー",
+    date: "2024.04.02",
+    title: "農園主の記憶と植え替えの季節",
+    excerpt: "初めて苗木を植えた日から今日までの、静かな物語。",
+    image:
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+  },
+];
+---
+
+<BaseLayout title="Journal | UNTFIELD COFFEE">
+  <section class="mx-auto w-full max-w-7xl px-6 py-20 md:py-24">
+    <div data-reveal>
+      <p class="text-xs font-semibold uppercase tracking-[0.4em] text-[#1f4d3a]">Journal</p>
+      <h1 class="mt-4 text-4xl font-semibold leading-tight text-[#1a1a1a] md:text-5xl">
+        見聞録: 森の時間とコーヒーの記憶
+      </h1>
+      <p class="mt-5 text-lg leading-relaxed text-black/70">
+        栽培便り、歴史、研究ノートなど、背景を知るための記録をまとめています。
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-7xl px-6 pb-28">
+    <div class="grid gap-6 md:grid-cols-3" data-reveal>
+      {posts.map((post) => (
+        <article class="hover-lift overflow-hidden rounded-3xl border border-black/5 bg-white/80">
+          <img src={post.image} alt={post.title} class="h-48 w-full object-cover transition duration-700 hover:scale-[1.05]" />
+          <div class="p-6">
+            <p class="text-xs uppercase tracking-[0.2em] text-black/40">
+              {post.category} · {post.date}
+            </p>
+            <h2 class="mt-2 text-lg font-semibold text-[#1a1a1a]">{post.title}</h2>
+            <p class="mt-2 text-sm text-black/60">{post.excerpt}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

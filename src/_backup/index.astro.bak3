@@ -1,0 +1,195 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const cards = [
+  {
+    title: "農園について",
+    desc: "やんばるの森で育つ、有機国産コーヒー。栽培と循環の取り組み。",
+    href: "/ja/farm",
+    icon: "🌳",
+  },
+  {
+    title: "生豆・焙煎豆",
+    desc: "生豆・焙煎豆のご相談はこちら。準備中でもお問い合わせ導線でOK。",
+    href: "/ja/beans",
+    icon: "☕",
+  },
+  {
+    title: "コーヒーノ木オーナーシップ",
+    desc: 'コーヒーを"買う"のではなく"育てる物語に参加する"制度。',
+    href: "/ja/ownership",
+    icon: "🌿",
+  },
+];
+
+const blogCategories = [
+  "季節便り",
+  "コーヒーの歴史",
+  "論文ベースの効能",
+  "用語辞典",
+];
+---
+
+<BaseLayout title="UNTFIELD COFFEE">
+  <!-- Hero Section -->
+  <section class="bg-cream">
+    <div class="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <!-- Left: Copy & CTA -->
+        <div class="space-y-8">
+          <div class="space-y-6">
+            <p class="text-xs font-medium tracking-[0.15em] text-forest uppercase">
+              ORGANIC JAPANESE COFFEE • YANBARU
+            </p>
+            <h1 class="text-4xl font-bold leading-[1.2] tracking-tight text-ink sm:text-5xl lg:text-6xl">
+              世界自然遺産・やんばるの森で育つ、<span class="text-forest">有機国産コーヒー</span>
+            </h1>
+            <p class="text-lg leading-relaxed text-coffee sm:text-xl max-w-xl">
+              森とともに育て、豆の背景まで届ける。生豆・焙煎豆、そして「育てる物語」に参加できるオーナー制度。
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a
+              href="/ja/farm"
+              class="inline-flex items-center justify-center rounded-full bg-forest px-7 py-3.5 text-sm font-semibold text-white shadow-md hover:bg-forest-600 hover:shadow-lg transition-all duration-200"
+            >
+              農園について
+            </a>
+            <a
+              href="/ja/blog"
+              class="inline-flex items-center justify-center rounded-full border-2 border-roast bg-white px-7 py-3.5 text-sm font-semibold text-roast hover:bg-cream-100 transition-all duration-200"
+            >
+              見聞録を読む
+            </a>
+            <a
+              href="/ja/contact"
+              class="inline-flex items-center justify-center rounded-full border-2 border-coffee bg-white px-7 py-3.5 text-sm font-semibold text-coffee hover:bg-cream-100 transition-all duration-200"
+            >
+              お問い合わせ
+            </a>
+          </div>
+        </div>
+        <!-- Right: Image Placeholder -->
+        <div class="relative aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-forest-500 via-forest-600 to-forest-700 border-2 border-cream-200">
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-white/90">
+            <div class="text-center space-y-4">
+              <div class="text-6xl mb-4">🌲</div>
+              <p class="text-2xl font-bold tracking-wide">Yanbaru</p>
+              <p class="text-lg font-medium">Organic Coffee</p>
+              <div class="pt-4 border-t border-white/20 w-32 mx-auto"></div>
+              <p class="text-sm text-white/80 pt-2">世界自然遺産の森で育つ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Cards Section -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+        {cards.map((c) => (
+          <a
+            href={c.href}
+            class="group rounded-3xl border-2 border-cream-200 bg-white p-10 shadow-sm hover:shadow-lg hover:border-forest-300 transition-all duration-300"
+          >
+            <div class="text-5xl mb-6">{c.icon}</div>
+            <h2 class="text-2xl font-bold text-ink mb-4 group-hover:text-forest transition-colors">
+              {c.title}
+            </h2>
+            <p class="text-base leading-relaxed text-coffee mb-6">
+              {c.desc}
+            </p>
+            <span class="inline-flex items-center text-sm font-semibold text-forest group-hover:text-forest-600 transition-colors">
+              詳しく見る
+              <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Ownership Highlight Section -->
+  <section class="bg-forest-50">
+    <div class="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <div class="max-w-4xl mx-auto">
+        <div class="rounded-3xl bg-gradient-to-br from-forest to-forest-600 p-10 sm:p-14 lg:p-16 text-white shadow-xl">
+          <div class="space-y-8">
+            <div class="text-6xl mb-2">🌿</div>
+            <div class="space-y-6">
+              <h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl leading-tight text-white">
+                コーヒーノ木オーナーシップ
+              </h2>
+              <p class="text-lg sm:text-xl leading-relaxed text-white/95 max-w-2xl">
+                コーヒーを"買う"のではなく"育てる物語に参加する"制度。<br />
+                やんばるの森で育つコーヒーノ木をオーナーとして所有し、収穫から焙煎まで、コーヒーができるまでの物語を一緒に体験できます。
+              </p>
+              <div class="flex items-center gap-3 pt-2">
+                <span class="inline-flex items-center px-4 py-2 rounded-full bg-white/20 text-sm font-medium text-white">
+                  💚 応援・参加型
+                </span>
+                <span class="inline-flex items-center px-4 py-2 rounded-full bg-white/20 text-sm font-medium text-white">
+                  📦 年1回豆が届く
+                </span>
+                <span class="inline-flex items-center px-4 py-2 rounded-full bg-white/20 text-sm font-medium text-white">
+                  📖 ストーリー重視
+                </span>
+              </div>
+            </div>
+            <div class="pt-4">
+              <a
+                href="/ja/ownership"
+                class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-base font-semibold text-forest shadow-lg hover:bg-cream-50 transition-all duration-200"
+              >
+                オーナー制度について
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Teaser Section -->
+  <section class="bg-cream">
+    <div class="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <div class="max-w-4xl mx-auto">
+        <div class="rounded-3xl border-2 border-cream-200 bg-white p-10 sm:p-12 lg:p-14 shadow-sm">
+          <div class="space-y-8">
+            <div class="space-y-4">
+              <h3 class="text-3xl font-bold text-ink sm:text-4xl">
+                コーヒー知ろうと見聞録
+              </h3>
+              <p class="text-lg leading-relaxed text-coffee sm:text-xl max-w-2xl">
+                栽培・季節便り、コーヒーの歴史、論文ベースの効能、用語辞典。<br />
+                "知るほどにおいしくなる"コーヒーの背景を発信します。
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-3 pt-2">
+              {blogCategories.map((cat) => (
+                <span class="inline-flex items-center px-4 py-2 rounded-full bg-cream-100 border border-cream-200 text-sm font-medium text-coffee">
+                  {cat}
+                </span>
+              ))}
+            </div>
+            <div class="pt-4">
+              <a
+                href="/ja/blog"
+                class="inline-flex items-center justify-center rounded-full border-2 border-roast bg-white px-7 py-3.5 text-sm font-semibold text-roast hover:bg-cream-100 transition-all duration-200"
+              >
+                見聞録一覧へ
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
